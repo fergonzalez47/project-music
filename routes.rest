@@ -1,0 +1,95 @@
+### Get all the artists..
+
+GET http://localhost:3000 
+Content-Type: application/json
+
+
+### Get all the albums..
+
+GET http://localhost:3000/album
+Content-Type: application/json
+
+
+
+### Post a new artist
+POST http://localhost:3000 
+Content-Type: application/json
+
+{
+      "_id": "64683d203885c8252f26dce6",
+      "stageName": "name",
+      "firstName": "ffirstNamei",
+      "lastName": "lastName",
+      "age": 50,
+      "genre": "rock",
+      "birthday": "1973-12-01",
+} 
+
+
+### Post a new Album
+
+POST http://localhost:3000/album
+Content-Type: application/json
+
+{
+      "title": "Future Nostalgia",
+      "released": "2020-03-27T00:00:00.000Z",
+      "artist": "64681a5e3885c8252f26dce0",
+      "songs": 11,
+}
+
+
+### RENDER ###
+
+
+### Get all the artists..
+
+GET https://cse341-project-music.onrender.com 
+Content-Type: application/json
+
+
+### Get all the albums..
+
+GET https://cse341-project-music.onrender.com/album
+Content-Type: application/json
+
+
+
+### Post a new artist
+POST https://cse341-project-music.onrender.com
+Content-Type: application/json
+
+{
+      "_id": "64683d203885c8252f26dce6",
+      "stageName": "name",
+      "firstName": "ffirstNamei",
+      "lastName": "lastName",
+      "age": 50,
+      "genre": "rock",
+      "birthday": "1973-12-01",
+} 
+
+
+### Post a new Album
+
+POST https://cse341-project-music.onrender.com/album
+Content-Type: application/json
+
+{
+      "title": "Future Nostalgia",
+      "released": "2020-03-27T00:00:00.000Z",
+      "artist": "64681a5e3885c8252f26dce0",
+      "songs": 11,
+}
+
+
+### Get an artist by ID
+
+GET https://cse341-project-music.onrender.com/64681a5e3885c8252f26dce0
+Content-Type: application/json
+
+### Get albums from an artist based on the artist ID
+
+GET https://cse341-project-music.onrender.com/album/64681a5e3885c8252f26dce0
+Content-Type: application/json
+
