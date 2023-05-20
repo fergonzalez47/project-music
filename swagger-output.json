@@ -155,7 +155,7 @@
     },
     "/album/{id}": {
       "get": {
-        "description": "This path gets an album's information based on the ID provided",
+        "description": "This path gets an album's information based on the artist ID provided",
         "parameters": [
           {
             "name": "id",
