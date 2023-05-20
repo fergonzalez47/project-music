@@ -53,7 +53,7 @@ const newArtist = async (req, res) => {
         let artistModel = new Artist(artist);
         await artistModel.save();
         //Return the new artist ID in the response body
-        res.json({ id: artistModel._id });
+        res.status(201).json({ id: artistModel._id });
 
         console.log("*** Artist Saved ***");
     } catch (error) {
@@ -113,7 +113,7 @@ const newAlbum = async (req, res) => {
         let albumModel = new Album(album);
         await albumModel.save();
         //Return the new album ID in the response body
-        res.json({ id: albumModel._id, name: albumModel.title });
+        res.status(201).json({ id: albumModel._id, name: albumModel.title });
 
         console.log("*** Album Saved ***");
 
