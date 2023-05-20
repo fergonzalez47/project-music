@@ -5,8 +5,8 @@ const doc = {
         title: 'My Music API',
         description: 'API for getting, posting, updating and deleting Artists and Albums belonging to them.',
     },
-    host: 'localhost:3000',
-    schemes: ['http'],
+    host: 'cse341-project-music.onrender.com',
+    schemes: ['https'],
 };
 
 const outputFile = './swagger-output.json';

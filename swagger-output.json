@@ -5,10 +5,10 @@
     "description": "API for getting, posting, updating and deleting Artists and Albums belonging to them.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-project-music.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/api-docs": {
@@ -20,7 +20,7 @@
     },
     "/": {
       "get": {
-        "description": "",
+        "description": "Deploy a list of al the artists",
         "parameters": [],
         "responses": {
           "200": {
@@ -32,7 +32,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "used to create a new artist..",
         "parameters": [
           {
             "name": "body",
@@ -77,7 +77,7 @@
     },
     "/album": {
       "get": {
-        "description": "",
+        "description": "Get all the albums in the collection",
         "parameters": [],
         "responses": {
           "200": {
@@ -89,7 +89,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Used to create a new album for an artist",
         "parameters": [
           {
             "name": "body",
@@ -131,7 +131,7 @@
     },
     "/{id}": {
       "get": {
-        "description": "",
+        "description": "This path gets an artist's information based on the ID provided",
         "parameters": [
           {
             "name": "id",
@@ -155,7 +155,7 @@
     },
     "/album/{id}": {
       "get": {
-        "description": "",
+        "description": "This path gets an album's information based on the ID provided",
         "parameters": [
           {
             "name": "id",
