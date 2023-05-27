@@ -1,6 +1,12 @@
 const router = require('express').Router();
+
+const { CreateArtistValidation,
+deleteArtistValidation,
+CreateAlbumValidation,
+deleteAlbumValidation } = require("../validation.js");
+
 const { getArtists, getArtistById, newArtist, newAlbum, getArtistAlbums,
-    getAlbums } = require('../controllers/controllers.js');
+    getAlbums, updateArtist, updateAlbum, deleteArtist, deleteAlbum } = require('../controllers/controllers.js');
 
 
 //swagger
@@ -15,10 +21,16 @@ router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 router.get('/', getArtists);
 router.get('/album', getAlbums);
 router.get('/:id', getArtistById);
-
 router.get('/album/:id', getArtistAlbums);
 
-router.post('/', newArtist);
-router.post('/album', newAlbum);
+router.put('/:id', updateArtist);
+router.put('/album/:id', updateAlbum);
+
+router.post('/', CreateArtistValidation, newArtist);
+router.post('/album', CreateAlbumValidation, newAlbum);
+
+router.delete('/:id', deleteArtistValidation, deleteArtist);
+router.delete('/album/:id', deleteAlbumValidation, deleteAlbum);
+
 
 module.exports = router;

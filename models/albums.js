@@ -14,6 +14,9 @@ const albumSchema = new mongoose.Schema({
         ref: 'artist',
         required: true
     },
+    artistName: {
+        type: String
+    },
     songs: {
         type: Number,
         required: true
