@@ -1,10 +1,10 @@
 const express = require('express');
 const app = express();
-const path = require("path");
 const cors = require("cors");
 const connectDB = require('./db/connection.js');
 const exphbs = require("express-handlebars").create({ defaultLayout: 'main', extname: '.hbs' });
 
+const path = require('path');
 
 
 //middleware que se utiliza para analizar los cuerpos de las solicitudes entrantes en JSON / datos URL - encoded

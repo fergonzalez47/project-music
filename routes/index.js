@@ -21,6 +21,9 @@ const {
     deleteAlbum
 } = require('../controllers/controllers.js');
 
+router.get('/api-docs', swaggerUi.setup(swaggerDocument));
+router.use('/api-docs', swaggerUi.serve);
+
 // Login / Landing page
 router.get("/login", (req, res) => {
     res.render("login", {
@@ -32,8 +35,7 @@ router.get("/dashboard", (req, res) => {
     res.render("dashboard");
 });
 
-router.get('/api-docs', swaggerUi.setup(swaggerDocument));
-router.use('/api-docs', swaggerUi.serve);
+
 
 router.get('/artist', getArtists);
 router.get('/album', getAlbums);

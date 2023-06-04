@@ -23,7 +23,6 @@
     "http-errors": "^2.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^7.1.2",
-    "moongose": "^1.0.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "swagger-ui-express": "^4.6.3"
