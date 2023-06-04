@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require("cors");
 const connectDB = require('./db/connection.js');
-const exphbs = require("express-handlebars");
-
+const exphbs = require("express-handlebars").create({ defaultLayout: 'main', extname: '.hbs' });
 
 const path = require('path');
 
@@ -19,8 +18,7 @@ const errorHandler = require('./errorHandler');
 
 // Handlebars
 
-app.engine('.hbs', exphbs.create({ defaultLayout: 'main', extname: '.hbs' }));
-
+app.engine('.hbs', exphbs.engine);
 app.set("view engine", ".hbs");
 
 // Static folder
