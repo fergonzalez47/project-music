@@ -14,7 +14,7 @@ const errorHandler = require('./errorHandler');
 
 
 // // swaggerAutogen
-// const swaggerAutogen = require('swagger-autogen')();
+const swaggerAutogen = require('swagger-autogen')();
 
 // Handlebars
 

@@ -1,7 +1,4 @@
 const router = require('express').Router();
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('../swagger-output.json');
-
 const { CreateArtistValidation,
     deleteArtistValidation,
     CreateAlbumValidation,
@@ -20,9 +17,11 @@ const {
     deleteArtist,
     deleteAlbum
 } = require('../controllers/controllers.js');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger-output.json');
 
-router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 router.use('/api-docs', swaggerUi.serve);
+router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 // Login / Landing page
 router.get("/login", (req, res) => {
