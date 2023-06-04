@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
+const path = require("path");
 const cors = require("cors");
 const connectDB = require('./db/connection.js');
+const exphbs = require("express-handlebars").create({ defaultLayout: 'main', extname: '.hbs' });
+
+
 
 //middleware que se utiliza para analizar los cuerpos de las solicitudes entrantes en JSON / datos URL - encoded
 const bodyParser = require('body-parser');
@@ -11,6 +15,15 @@ const errorHandler = require('./errorHandler');
 
 // // swaggerAutogen
 // const swaggerAutogen = require('swagger-autogen')();
+
+// Handlebars
+
+app.engine('.hbs', exphbs.engine);
+app.set("view engine", ".hbs");
+
+// Static folder
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // Analizar solicitudes con cuerpo JSON

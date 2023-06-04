@@ -1,0 +1,13 @@
+body {
+    background-color: blueviolet;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.login-container {
+    width: 60%;
+    margin-top: 50px;
+    text-align: center;
+}

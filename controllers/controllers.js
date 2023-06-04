@@ -23,24 +23,22 @@ const getArtists = async (req, res) => {
 
 const getArtistById = async (req, res, next) => {
     try {
-        const artist = await Artist.findById(req.params.id);
+        const artistId = req.params.id;
 
-        // if (!artist) {
-        //     return res.status(404).json({ message: 'Artist not found' });
-        // };
+        if (!mongoose.Types.ObjectId.isValid(artistId)) {
+            throw createError(400, "Invalid artist ID");
+        }
+
+        const artist = await Artist.findById(artistId);
 
         if (!artist) {
             throw createError(404, "Artist not found");
-        };
+        }
 
         res.json(artist);
     } catch (error) {
         console.log(error);
-        
-        if (error instanceof mongoose.CastError) {
-            next(createError(400, "invalid artist ID."));
-            return
-        }
+
         next(error);
     }
 };
