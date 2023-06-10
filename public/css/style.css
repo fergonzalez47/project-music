@@ -11,3 +11,8 @@ p {
     margin-top: 50px;
     text-align: center;
 }
+
+.list {
+    display: inline-block;
+    list-style-type: none;
+}

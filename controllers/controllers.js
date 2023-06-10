@@ -10,9 +10,11 @@ const { validationResult } = require('express-validator');
 
 const getArtists = async (req, res) => {
     try {
-        const artists = await Artist.find();
+        const artists = await Artist.find().lean();
 
-        res.status(200).json({ artists });
+        // res.status(200).json({ artists });
+        console.log(artists);
+        res.render("artist", { artists: artists });
     } catch (error) {
         console.log(error);
 
@@ -75,7 +77,7 @@ const newArtist = async (req, res, next) => {
 
         console.log("*** Artist Saved ***");
     } catch (error) {
-        console.error(error.name, error.message );
+        console.error(error.name, error.message);
         // res.status(500).send('Error saving the new Artist');
         if (error.name === "ValidationError") {
             next(createError(422, error.message));
@@ -119,7 +121,7 @@ const newAlbum = async (req, res, next) => {
     //     return res.status(400).json({ message: 'All fields are required' });
     // };
     //------------------- Validation ------------------------- //
-        const errors = validationResult(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     };
@@ -210,7 +212,7 @@ const updateArtist = async (req, res, next) => {
         }
 
         const updatedArtist = await Artist.findByIdAndUpdate(artistToUpdate, update, { new: true });
-        
+
         if (!updatedArtist) {
             throw createError(404, "Artist does not exist");
         };
@@ -255,7 +257,7 @@ const updateAlbum = async (req, res, next) => {
         res.status(200).json({ message: "Album Updated...", updatedAlbum });
         console.log("Album Updated...");
     } catch (error) {
-        console.error( error, error.message);
+        console.error(error, error.message);
         res.status(500).send("Error updating the Album...");
     }
 }
@@ -269,7 +271,7 @@ const updateAlbum = async (req, res, next) => {
 
 const deleteArtist = async (req, res, next) => {
     //------------------- Validation ------------------------- //
-        const errors = validationResult(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     };
@@ -285,7 +287,7 @@ const deleteArtist = async (req, res, next) => {
         if (!deletedArtist) {
             throw createError(404, "Artist not found");
         };
-        
+
 
         res.status(200).json({ message: "Artist deleted" });
     } catch (error) {
@@ -307,7 +309,7 @@ const deleteArtist = async (req, res, next) => {
 const deleteAlbum = async (req, res, next) => {
 
     //------------------- Validation ------------------------- //
-        const errors = validationResult(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     };

@@ -17,6 +17,10 @@ const {
     deleteArtist,
     deleteAlbum
 } = require('../controllers/controllers.js');
+
+const { ensureAuth, ensureGuest } = require("../middleware/auth.js");
+
+
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger-output.json');
 
@@ -24,30 +28,32 @@ router.use('/api-docs', swaggerUi.serve);
 router.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
 // Login / Landing page
-router.get("/login", (req, res) => {
+router.get("/login", ensureGuest, (req, res) => {
     res.render("login", {
         layout: "login",
     });
 });
 
-router.get("/dashboard", (req, res) => {
-    res.render("dashboard");
+router.get("/dashboard", ensureAuth, (req, res) => {
+    res.render("dashboard", {
+        name: req.user.firstName
+    });
 });
 
 
 
-router.get('/artist', getArtists);
-router.get('/album', getAlbums);
-router.get('/album/:id', getArtistAlbums);
-router.get('/artist/:id', getArtistById);
+router.get('/artist',ensureAuth, getArtists);
+router.get('/album',ensureAuth, getAlbums);
+router.get('/album/:id',ensureAuth, getArtistAlbums);
+router.get('/artist/:id',ensureAuth, getArtistById);
 
-router.put('/artist/:id', updateArtist);
-router.put('/album/:id', updateAlbum);
+router.put('/artist/:id',ensureAuth, updateArtist);
+router.put('/album/:id',ensureAuth, updateAlbum);
 
-router.post('/artist', CreateArtistValidation, newArtist);
-router.post('/album', CreateAlbumValidation, newAlbum);
+router.post('/artist',ensureAuth, CreateArtistValidation, newArtist);
+router.post('/album', ensureAuth, CreateAlbumValidation, newAlbum);
 
-router.delete('/artist/:id', deleteArtistValidation, deleteArtist);
-router.delete('/album/:id', deleteAlbumValidation, deleteAlbum);
+router.delete('/artist/:id', ensureAuth, deleteArtistValidation, deleteArtist);
+router.delete('/album/:id', ensureAuth, deleteAlbumValidation, deleteAlbum);
 
 module.exports = router;

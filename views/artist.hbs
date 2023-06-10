@@ -1,0 +1,24 @@
+<h1>Artists</h1>
+{{#if artists}}
+<table>
+    <tr>
+        <th>Stage Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Genre</th>
+        <th>Birthday</th>
+    </tr>
+
+    {{#each artists}}
+    <tr>
+        <td>{{this.stageName}}</td>
+        <td>{{this.firstName}}</td>
+        <td>{{this.lastName}}</td>
+        <td>{{this.age}}</td>
+        <td>{{this.genre}}</td>
+        <td>{{this.birthday}}</td>
+    </tr>
+    {{/each}}
+    {{/if}}
+</table>
