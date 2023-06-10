@@ -13,7 +13,6 @@ const getArtists = async (req, res) => {
         const artists = await Artist.find().lean();
 
         // res.status(200).json({ artists });
-        console.log(artists);
         res.render("artist", { artists: artists });
     } catch (error) {
         console.log(error);
